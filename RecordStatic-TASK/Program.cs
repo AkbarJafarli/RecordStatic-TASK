@@ -10,9 +10,15 @@ for (int i = 0; i < users.Length; i++)
     string email = Console.ReadLine();
     Console.Write("Password:");
     string password = Console.ReadLine();
-    Console.WriteLine(" ");
+    if (User.PasswordChecker(password))
+    {
+        users[i] = new User(email,password);
+    }
+    else
+    {
+        Console.WriteLine("Duzgun daxil edin");
+    }
 
-    users[i] = new User(fullname, email, password);
 }
 
 while (true)
@@ -29,7 +35,7 @@ while (true)
         Console.WriteLine("All students:");
         foreach (User user in users)
         {
-            user.GetInfo();
+            user.ShowInfo();
         }
         //Console.ReadLine();
         //Console.Clear();
@@ -42,7 +48,7 @@ while (true)
         if (founduser != null)
         {
             Console.WriteLine("User found:");
-            founduser.GetInfo();
+            founduser.ShowInfo();
         }
         else
         {
